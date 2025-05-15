@@ -1,23 +1,70 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+//import QRCode from 'react-native-qrcode-svg';
+import { useRouter } from 'expo-router';
 
-export default function Perfil() {
+const ProfileScreen = () => {
+
+  const profileData = {
+    name: 'Ariel Perez',
+    userType: 'Cazador | Pescador',
+    qrValue: 'arielperez', 
+  };
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mi Perfil</Text>
-      <Text>Detalles del perfil...</Text>
+      <View style={styles.profileContainer}>
+        <Ionicons name="person-circle" size={100} color="#333" />
+      </View>
+        {/* Datos */}
+        <Text style={styles.name}>{profileData.name}</Text>
+        <Text style={styles.userType}>{profileData.userType}</Text>
+        {/* QR Code 
+        <View style={styles.qrContainer}>
+          <QRCode value={profileData.qrValue} size={150} />
+        </View> */}
+        <TouchableOpacity
+        >
+          <Text style={{ color: 'red' }}>Cerrar sesión</Text>
+        </TouchableOpacity>
+
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#ffffff',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    padding: 20,
   },
-  title: {
-    fontSize: 24,
+  profileContainer: {
+    alignItems: 'center',
+  },
+  name: {
+    fontSize: 22,
     fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+  },
+  userType: {
+    fontSize: 16,
+    color: '#888',
+    marginBottom: 10,
+  },
+  qrContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
+
+export default ProfileScreen;
+
+function useState(arg0: string): [any, any] {
+  throw new Error('Function not implemented.');
+}
+

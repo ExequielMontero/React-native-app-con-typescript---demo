@@ -2,30 +2,49 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useAuth } from '../../../context/authContext';
 
 export default function MiCuenta() {
-  const router = useRouter();
-
   const opciones = [
-    { id:1,label: 'Mi Perfil', icon: 'person', route: './mi-cuenta/perfil' },
-    { id:2,label: 'Mis Trámites', icon: 'document-text', route: './mi-cuenta/perfil' },
-    { id:3,label: 'Registrar Captura', icon: 'camera', route: './mi-cuenta/perfil' },
-    { id:4,label: 'Soporte y Contacto', icon: 'help-circle', route: './mi-cuenta/perfil' },
+    { id:1,label: 'Mi Perfil', icon: 'person', route: '/tabs/mi-cuenta/perfil' },
+    { id:2,label: 'Mis Trámites', icon: 'document-text', route: '/tabs/mi-cuenta/perfil' },
+    { id:3,label: 'Registrar Captura', icon: 'camera', route:'/tabs/mi-cuenta/perfil' },
+    { id:4,label: 'Soporte y Contacto', icon: 'help-circle', route: '/tabs/mi-cuenta/perfil' },
   ];
+  const router = useRouter();
+  const { isLoggedIn, logout } = useAuth();
+
+  if (!isLoggedIn) {
+    return (
+      <View style={styles.container}>
+        <Text>Debes iniciar sesión para gestionar tus trámites</Text>
+        <TouchableOpacity onPress={() => router.push('/auth/login')}>
+          <Text style={{ color: 'blue' }}>Iniciar Sesión</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
+
+      <View style={styles.container}>
       {opciones.map((opt) => (
         <TouchableOpacity
           key={opt.id}
           style={styles.card}
           activeOpacity={0.7}
-          onPress={() => router.push(opt.route)}
+          onPress={() => router.replace(opt.route)}
         >
           <Ionicons name={opt.icon as any} size={28} color="#fff" style={styles.icon} />
           <Text style={styles.cardText}>{opt.label}</Text>
         </TouchableOpacity>
+        
       ))}
+    </View>
+    <TouchableOpacity onPress={logout}>
+        <Text style={{ color: 'red' }}>Cerrar sesión</Text>
+      </TouchableOpacity>
     </View>
   );
 }

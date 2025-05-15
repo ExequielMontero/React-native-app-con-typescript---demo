@@ -1,14 +1,18 @@
-// app/_layout.tsx
+// app/tabs/_layout.tsx
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
 
 export default function TabsLayout() {
+
   return (
+ 
     <Tabs>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Inicio',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
         }}
       />
@@ -20,10 +24,10 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="control"
+        name="soporte"
         options={{
-          title: 'Fiscalización',
-          tabBarIcon: ({ color, size }) => <Ionicons name="shield-checkmark" size={size} color={color} />,
+          title: 'Soporte y Contacto',
+          tabBarIcon: ({ color, size }) => <Ionicons name="information-circle" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
