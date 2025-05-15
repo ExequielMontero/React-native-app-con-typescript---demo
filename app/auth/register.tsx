@@ -12,8 +12,6 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 
-// ...importaciones...
-
 export default function RegistroScreen() {
   const [documento, setDocumento] = useState('');
   const [cuil, setCuil] = useState('');
@@ -84,8 +82,15 @@ export default function RegistroScreen() {
         {errores.cuil && <Text style={styles.error}>{errores.cuil}</Text>}
 
         <Text style={styles.label}>Sexo</Text>
-        <TouchableOpacity style={styles.input} onPress={() => setSexoModalVisible(true)}>
-          <Text style={{ color: sexo ? '#000' : '#000', fontSize: 14, height: 42,  justifyContent: 'center', padding: 12}}>{sexo || 'Seleccione una opción'}</Text>
+        <TouchableOpacity onPress={() => setSexoModalVisible(true)}>
+          <TextInput
+            style={styles.input}
+            placeholder="Seleccione una opción"
+            placeholderTextColor="#000"
+            value={sexo}
+            editable={false}
+            pointerEvents="none"
+          />
         </TouchableOpacity>
         {errores.sexo && <Text style={styles.error}>{errores.sexo}</Text>}
 
@@ -186,13 +191,13 @@ const styles = StyleSheet.create({
   cancelButton: {
     marginTop: 10,
     borderWidth: 1,
-    borderColor: '#555',
+    borderColor: '#fff',
     borderRadius: 6,
     padding: 12,
     backgroundColor: 'white',
   },
   cancelButtonText: { color: '#333', textAlign: 'center', fontWeight: '600' },
-  registerButton: { backgroundColor: '#0066cc', borderRadius: 6, padding: 12 },
+  registerButton: { backgroundColor: 'green', borderRadius: 6, padding: 12, borderColor: 'green',},
   registerButtonText: { color: 'white', textAlign: 'center', fontWeight: '600' },
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.3)', justifyContent: 'center', padding: 30 },
   modalContent: { backgroundColor: '#fff', borderRadius: 10, paddingVertical: 20, paddingHorizontal: 15 },

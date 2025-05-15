@@ -7,7 +7,15 @@ export default function TabsLayout() {
 
   return (
  
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#1976d2', // Color del header
+        },
+        headerTintColor: '#fff', // Color del texto y los íconos del header
+        tabBarActiveTintColor: '#1976d2', // Color del icono activo en el tab
+        tabBarInactiveTintColor: '#777', // Color del icono inactivo
+      }}>
       <Tabs.Screen
         name="index"
         options={{
@@ -33,7 +41,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="comercio"
         options={{
-          title: 'Comercio',
+          title: 'Control y Fiscalización',
           tabBarIcon: ({ color, size }) => <Ionicons name="briefcase" size={size} color={color} />,
         }}
       />

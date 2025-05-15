@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useAuth } from '../../context/authContext';
@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const { isLoggedIn } = useAuth();
     return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.containerSuperior}>
           {/* Campanita para notificaciones */}
           <View style={styles.notificationContainer}>
@@ -17,13 +17,17 @@ export default function HomeScreen() {
               <Ionicons name="notifications" size={30} color="white" />
             </TouchableOpacity>
           </View>
-
+          <View style={styles.containerLogo}>
+          <Image
+            source={require('../../assets/logo_fauner.jpg')} // o require('./ruta/local.jpg')
+            style={styles.imagenCircular}
+      />
+          </View>
           {/* Mostrar nombre o botón de login */}
           
             {isLoggedIn ? (
               <View style={{alignItems:"center"}}>
               <View style={styles.iconButton}>
-                <Ionicons name="person-circle" size={40} color="white" />
                 <Text style={styles.iconTextWhite}>Hola, Ariel Perez </Text>
               </View>
               </View>
@@ -137,11 +141,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   newsSection: {
+    flex: 1,
     marginTop: 30,
     backgroundColor: '#1976d2',
     paddingVertical: 20,
     paddingHorizontal: 20,
-    minHeight: 350,
   },
   newsTitle: {
     fontSize: 18,
@@ -162,5 +166,16 @@ const styles = StyleSheet.create({
   newsText: {
     fontSize: 14,
     color: 'gray',
+  },
+  containerLogo: {
+    alignItems: 'center',
+   
+  },
+  imagenCircular: {
+    width: 75,
+    height: 75,
+    borderRadius: 20, // mitad del width/height para que sea un círculo
+    borderWidth: 2,
+    borderColor: '#1976d2',
   },
 });

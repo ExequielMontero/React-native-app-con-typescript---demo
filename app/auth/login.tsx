@@ -11,14 +11,13 @@ const LoginScreen = () => {
   const { login } = useAuth();
   
   const handleLogin = async () => {
-    if (usuario === 'admin' && contrasena === '1234') {
+    if (usuario === '1' && contrasena === '1') {
       login();
       router.replace('/tabs/mi-cuenta');
     } else {
       setError('Usuario o contraseña incorrectos');
     }
   };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Iniciar Sesión</Text>
@@ -78,11 +77,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 12,
     borderRadius: 8,
-    fontSize: 16,
+    fontSize: 14,
     marginBottom: 15,
   },
   button: {
-    backgroundColor: '#004ba0',
+    backgroundColor: 'green',
     paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -90,11 +89,11 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
+    //fontSize: 16,
     fontWeight: '600',
   },
   errorText: {
-    color: '#ffcccb',
+    color: 'red',
     textAlign: 'center',
     marginBottom: 10,
   },
@@ -106,12 +105,12 @@ const styles = StyleSheet.create({
   registerButton: {
     marginTop: 10,
     borderWidth: 1,
-    borderColor: '#555',
+    borderColor: '#fff',
     borderRadius: 6,
     padding: 12,
     backgroundColor: 'white',
   },
-  registerButtonText: { color: '#333', textAlign: 'center', fontWeight: '600' },
+  registerButtonText: { color: '#333', textAlign: 'center', fontWeight: '600',  borderColor: 'green' },
   label: { fontSize: 13, color: '#fff', marginBottom: 4, marginTop: 12 },
 });
 
