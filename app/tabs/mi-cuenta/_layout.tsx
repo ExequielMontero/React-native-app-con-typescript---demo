@@ -23,10 +23,6 @@ export default function MiCuentaLayout() {
         name="registrar"
         options={{ title: 'Registrar Captura' }}
       />
-      <Stack.Screen
-        name="soporte"
-        options={{ title: 'Soporte y Contacto' }}
-      />
     </Stack>
   );
 }

@@ -25,6 +25,9 @@ const ProfileScreen = () => {
         <View style={styles.qrContainer}>
           <QRCode value={profileData.qrValue} size={150} />
         </View> */}
+        <TouchableOpacity onPress={() => router.replace('./index')}>
+          <Text style={{ color: 'blue' }}>volver</Text>
+        </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           logout();

@@ -11,7 +11,7 @@ const LoginScreen = () => {
   const { login } = useAuth();
   
   const handleLogin = async () => {
-    if (usuario === 'admin' && contrasena === '1234') {
+    if (usuario === 'a' && contrasena === '1') {
       login();
       router.replace('/tabs/mi-cuenta');
     } else {

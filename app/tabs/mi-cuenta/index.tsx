@@ -7,9 +7,8 @@ import { useAuth } from '../../../context/authContext';
 export default function MiCuenta() {
   const opciones = [
     { id:1,label: 'Mi Perfil', icon: 'person', route: '/tabs/mi-cuenta/perfil' },
-    { id:2,label: 'Mis Trámites', icon: 'document-text', route: '/tabs/mi-cuenta/perfil' },
-    { id:3,label: 'Registrar Captura', icon: 'camera', route:'/tabs/mi-cuenta/perfil' },
-    { id:4,label: 'Soporte y Contacto', icon: 'help-circle', route: '/tabs/mi-cuenta/perfil' },
+    { id:2,label: 'Mis Trámites', icon: 'document-text', route: '/tabs/mi-cuenta/tramites' },
+    { id:3,label: 'Registrar Captura', icon: 'camera', route:'/tabs/mi-cuenta/registrar' },
   ];
   const router = useRouter();
   const { isLoggedIn, logout } = useAuth();
